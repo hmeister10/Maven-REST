@@ -6,6 +6,7 @@ public class TodoItem {
     private final String content;
 
     public TodoItem(long id, String content) {
+        
         this.id = id;
         this.content = content;
     }

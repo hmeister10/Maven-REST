@@ -1,6 +1,7 @@
 package todoapp.model;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class TodoList {
 
@@ -16,6 +17,16 @@ public class TodoList {
     
     public ArrayList<TodoItem> get() {
       return this.list;
+    }
+
+    public boolean remove(long id) {
+      Predicate<TodoItem> itemPredicate = item -> item.getId() == id;
+      try {
+        list.removeIf(itemPredicate);
+        return true;
+      } catch(Exception e) {
+        return false;
+      }
     }
 
 
