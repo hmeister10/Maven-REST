@@ -1,1 +1,1 @@
-web: java -jar target/todo-app-service-0.1.0.jar
+java $JAVA_OPTS -jar target/todo-app-service-0.1.0.jar --server.port=$PORT $JAR_OPTS
