@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 public class TodoList {
 
-    private final ArrayList<TodoItem> list  =new ArrayList<TodoItem>();
+    private final ArrayList<TodoItem> list = new ArrayList<TodoItem>();
 
     public TodoList() {
     }

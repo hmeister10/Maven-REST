@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import todoapp.model.CustomResponse;
 import todoapp.model.NewItem;
 import todoapp.model.TodoItem;
 import todoapp.model.TodoList;
@@ -24,8 +24,8 @@ public class todoAppController {
 
     
     @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody ArrayList<TodoItem> showList() { 
-      return list.get();
+    public @ResponseBody Object showList() { 
+      return new CustomResponse(list.get());
     }
 
     @RequestMapping(method=RequestMethod.POST)
