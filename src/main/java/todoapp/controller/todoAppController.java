@@ -1,7 +1,6 @@
 package todoapp.controller;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import todoapp.model.NewItem;
 import todoapp.model.TodoItem;
 import todoapp.model.TodoList;
 
@@ -24,28 +24,24 @@ public class todoAppController {
 
     
     @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody ArrayList<TodoItem> showList(
-      @RequestParam(
-        value="item",
-        required=false) String content) {
-         if(content!= null) {
-          TodoItem item = new TodoItem(counter.incrementAndGet(), content);
-          return list.add(item);
-         } else {
-           return list.get();
-         }
-          
+    public @ResponseBody ArrayList<TodoItem> showList() { 
+      return list.get();
     }
 
-    // @RequestMapping(method=RequestMethod.POST)
-    // public void @ResponseBody ResponseEntity<Void> addToList(
-    //   @RequestBody Map<String, Object> payload) throws Exception {
-    //     System.out.println("Payload is::");
-    //     System.out.println(payload);
-        
-    //     return new ResponseEntity<Void>(HttpStatus.OK);
-    //   }
-    // }
+    @RequestMapping(method=RequestMethod.POST)
+    @ResponseBody ResponseEntity<Void> addToList( @RequestBody NewItem item) throws Exception {
+      System.out.println("Payload is::");
+      System.out.println(item);
+
+      try {
+        TodoItem newItem = new TodoItem(counter.incrementAndGet(), item.getContent());
+        list.add(newItem);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+
+      } catch(Exception e) {
+        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+    }
 
 
     @RequestMapping(method=RequestMethod.DELETE)
