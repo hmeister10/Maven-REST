@@ -37,7 +37,7 @@ public class todoAppController {
       try {
         TodoItem newItem = new TodoItem(counter.incrementAndGet(), item.getContent());
         list.add(newItem);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
 
       } catch(Exception e) {
         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
