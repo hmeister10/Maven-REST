@@ -24,16 +24,8 @@ public class todoAppController {
 
     
     @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody ArrayList<TodoItem> showList(
-      @RequestParam(
-        value="id",
-        required=false) String id) {
-         if(id!= null) {
-          return list.get(id);
-         } else {
-           return list.get();
-         }
-          
+    public @ResponseBody ArrayList<TodoItem> showList() { 
+      return list.get();
     }
 
     @RequestMapping(method=RequestMethod.POST)
