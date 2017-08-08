@@ -2,15 +2,20 @@ package todoapp.model;
 
 public class CustomResponse {
 
-    private Object data;
+	private Object payload;
 
-    public CustomResponse(Object list) {
-        this.data = list;
-    }
+	public CustomResponse(Object payload) {
+		super();
+		this.payload = payload;
+	}
 
-    public Object get() {
-        return this.data;
-        
-    }
+	public Object getPayload() {
+		return payload;
+	}
 
+	public void setPayload(Object payload) {
+		this.payload = payload;
+	}
+
+   
 }
