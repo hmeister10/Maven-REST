@@ -10,7 +10,7 @@ import todoapp.model.TodoList;
  */
 public interface ListService {
 
-  List<TodoItem> listAll();
+  List<TodoList> listAll();
   TodoList getById(Long id);
 
   TodoList saveOrUpdate(TodoList list);

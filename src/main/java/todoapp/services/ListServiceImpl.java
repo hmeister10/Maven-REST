@@ -18,17 +18,17 @@ import todoapp.repositories.ListRepository;
 @Service
 public class ListServiceImpl implements ListService {
 
-  private ListRepository<TodoList> listRepository;
+  private ListRepository listRepository;
 
   @Autowired
-  public ListServiceImpl(ListRepository<TodoList> listRepository) {
+  public ListServiceImpl(ListRepository listRepository) {
     this.listRepository = listRepository;
   }
 
   @Override
-  public List<TodoItem> listAll() {
+  public List<TodoList> listAll() {
 
-    List<TodoItem> todoList = new ArrayList<TodoItem>();
+    List<TodoList> todoList = new ArrayList<>();
     listRepository.findAll().forEach(todoList::add);
     return todoList;
   }

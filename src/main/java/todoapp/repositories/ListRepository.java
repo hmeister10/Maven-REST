@@ -6,8 +6,7 @@ import todoapp.model.TodoList;
 
 /**
  * ListRepository
- * @param <TodoList>
  */
-public interface ListRepository<TodoList> extends CrudRepository<TodoList, Long> {
+public interface ListRepository extends CrudRepository<TodoList, Long> {
   
 }
